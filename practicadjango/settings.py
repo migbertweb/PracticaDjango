@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-h*vk76f9fpx*#6qhy2=u5qb!mn_ve)z4it25x749fvmaxst@y2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.midjangoapp.io', '127.0.0.1']
 
 
 # Application definition
