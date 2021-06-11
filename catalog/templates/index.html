@@ -13,4 +13,6 @@
     <li><strong>Generos:</strong> {{ num_genre }}</li>
     <li><strong>Libros de ficcion:</strong> {{ num_filter_book }}</li>
 </ul>
+<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+
 {% endblock %}
