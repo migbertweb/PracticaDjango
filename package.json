@@ -1,0 +1,63 @@
+{
+    "name": "practicadjango",
+    "version": "1.0.0",
+    "description": "Practica de Django - Webpack + TailwindCSS + ESbuild",
+    "main": "index.js",
+    "scripts": {
+        "dev": "webpack --mode=development --progress",
+        "watch": "npm-watch",
+        "start": "webpack server --mode development --config webpack.config.js",
+        "build": "npm run clean && npx cross-env NODE_ENV=production npx webpack-cli",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/migbertweb/Django_project.git"
+    },
+    "keywords": [],
+    "author": "Migbert Yanez",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/migbertweb/Django_project/issues"
+    },
+    "homepage": "https://github.com/migbertweb/Django_project#readme",
+    "devDependencies": {
+        "@babel/core": "^7.14.3",
+        "@babel/eslint-parser": "^7.14.3",
+        "@babel/plugin-proposal-decorators": "^7.14.2",
+        "@babel/plugin-transform-modules-amd": "^7.14.2",
+        "@babel/preset-env": "^7.14.2",
+        "@babel/preset-react": "^7.13.13",
+        "@tailwindcss/forms": "^0.3.2",
+        "alpinejs": "^2.8.2",
+        "autoprefixer": "^10.2.5",
+        "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.2.2",
+        "copy-webpack-plugin": "^8.1.1",
+        "css-loader": "^5.2.5",
+        "esbuild-loader": "^2.13.1",
+        "eslint": "^7.27.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-config-google": "^0.14.0",
+        "eslint-config-standard": "^16.0.3",
+        "eslint-plugin-import": "^2.23.3",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^5.1.0",
+        "lit": "^2.0.0-rc.2",
+        "lit-element": "^3.0.0-rc.2",
+        "mini-css-extract-plugin": "^1.6.0",
+        "npm-watch": "^0.9.0",
+        "postcss": "^8.2.15",
+        "postcss-cli": "^8.3.1",
+        "postcss-fixes": "^2.0.1",
+        "postcss-import": "^14.0.2",
+        "postcss-loader": "^5.3.0",
+        "postcss-preset-env": "^5.3.0",
+        "style-loader": "^2.0.0",
+        "tailwindcss": "^2.1.2",
+        "twind": "^0.16.16",
+        "webpack": "^5.37.1",
+        "webpack-cli": "^4.7.0",
+        "webpack-dev-server": "^3.11.2"
+    }
+}
