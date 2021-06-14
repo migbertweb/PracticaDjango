@@ -1,11 +1,44 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
+const brandColors = {
+  green: '#2b322b',
+};
+
+const systemColors = {
+  blue: '#007aff',
+};
+
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  // mode: 'jit',
+  purge: {
+    // mode: 'all',
+    // content: ['./templates/**/*.html',
+    //  './**/**/*.html',
+    //  './src/**/*.html',
+    //  './src/**/*.liquid',
+    //  './src/js/**/*.js'
+    // ],
+  },
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        // `ex` prefix will create classes like `text-ex-red`
+        // Remove `ex` if you dont want prefix
+        ex: {
+          ...brandColors,
+          ...systemColors,
+        },
+      },
+      fontFamily: {
+        sans: ['Lato', ...defaultTheme.fontFamily.sans],
+      },
+      screens: {
+        xxl: '1410px',
+      },
+    },
   },
   variants: {
-    extend: {},
+    borderWidth: ['responsive', 'hover'],
   },
-  plugins: [],
-}
+  // plugins: [require('@tailwindcss/forms')],
+};

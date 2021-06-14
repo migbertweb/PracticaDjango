@@ -1,56 +1,68 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const CopyPlugin = require("copy-webpack-plugin");
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
-const {ESBuildMinifyPlugin} = require('esbuild-loader')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
+const prod = process.env.NODE_ENV === 'production';
 
-module.exports = {
-  entry: path.resolve(__dirname, 'src/index'),
+const config = {
+  entry: {
+    app: './src/js/app',
+  },
   output: {
-    path: path.resolve(__dirname, 'static'),
-    filename: 'js/[name].js'
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[name].[chunkhash:3].js',
+    path: path.resolve('./static'),
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, './webdjango'),
+    watchContentBase: true,
+    writeToDisk: true,
+    open: false,
+    progress: true,
   },
   module: {
     rules: [{
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
         loader: 'esbuild-loader',
         options: {
-          loader: 'jsx', // Remove this if you're not using JSX
-          target: 'es2015' // Syntax to compile to (see options below for possible values)
+          minify: true,
         }
       },
       {
+        test: /\.ts?$/,
+        loader: 'esbuild-loader',
+        options: {
+          loader: 'ts', // Or 'ts' if you don't need tsx
+          minify: true,
+        },
+      },
+      {
         test: /\.css$/,
-        use: [{
-            loader: MiniCssExtractPlugin.loader
-          },
-          'css-loader',
-          'postcss-loader'
-        ]
-      }
-    ]
-  },
-  devServer: {
-    contentBase: path.resolve(__dirname, '/'),
-    port: 9000
+        use: [
+          MiniCssExtractPlugin.loader,
+          { loader: 'css-loader', options: { url: false } },
+          'postcss-loader',
+        ],
+      },
+    ],
   },
   optimization: {
-    minimize: true,
+    minimize: prod,
     minimizer: [
       new ESBuildMinifyPlugin({
-        target: 'es2015', // Syntax to compile to (see options below for possible values)
-        css: true  // Apply minification to CSS assets
-      })
-    ]
+        css: true,
+      }),
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/[name].css"
+      filename: 'css/[name].css',
     }),
-    /*new HtmlWebpackPlugin({
-      template: "src/index.html" //source html
-    })*/
-  ]
+    // new CopyPlugin({ patterns: [{ from: 'src/index.html', to: '../views/pages/index.html' }] })
+  ],
+  mode: prod ? 'production' : 'development',
 };
 
-//module.exports = config;
+module.exports = config;

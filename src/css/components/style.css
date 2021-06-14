@@ -1,0 +1,27 @@
+.form-control {
+    @apply border border-gray-300 rounded-sm outline-none transition-colors duration-150 ease-in-out focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm;
+}
+
+h1 {
+    @apply mb-4 text-4xl font-semibold;
+}
+
+h2 {
+    @apply mb-4 text-3xl font-semibold;
+}
+
+h3 {
+    @apply mb-4 text-2xl font-semibold;
+}
+
+h4 {
+    @apply mb-4 text-xl font-semibold;
+}
+
+h5 {
+    @apply mb-4 text-lg font-semibold;
+}
+
+p {
+    @apply mb-3 leading-tight;
+}

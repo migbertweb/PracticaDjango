@@ -5,27 +5,28 @@
 {% endif %}
 {% if next %}
 {% if user.is_authenticated %}
-<p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
+<p>Su cuenta no tiene los privilegios para ver esta pagina,
+    accese con una cuenta que tenga los privilegios.</p>
 {% else %}
-<p>Please login to see this page.</p>
+<p><h1>hola</h1>Por favor acceda para ver esta pagina.</p>
 {% endif %}
 {% endif %}
 <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-    <div>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
+    <div class="form-control">
+       {{ form.username.label_tag }}
+        {{ form.username }}
+    </div>
+    <div class="form-control mt-2"> 
+        {{ form.password.label_tag }}
+        {{ form.password }}
     </div>
     <div>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-    </div>
-    <div>
-        <input type="submit" value="login" />
+        <input type="submit" class="py-2 px-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform rounded-md focus:outline-none cursor-pointer bg-indigo-500 hover:bg-indigo-400" value="Ingresar">
+        
         <input type="hidden" name="next" value="{{ next }}" />
     </div>
 </form>
 {# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+<p><a href="{% url 'password_reset' %}">Perdio la contraseña?</a></p>
 {% endblock %}
